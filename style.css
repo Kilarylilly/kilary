@@ -1,0 +1,92 @@
+/* impostare il background */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: url('https://elements-resized.envatousercontent.com/elements-video-cover-images/f5dba5a5-5dc3-4d74-83fb-84ab82e72fbc/video_preview/video_preview_0000.jpg?w=900&cf_fit=cover&q=85&format=auto&s=ce97c1a641b48a42a90644f4272f35a6396e92f8e6e4a32b58d17685b0dac47e')no-repeat center center/cover;
+    color: #ffffff;
+    text-align: center;
+    overflow: hidden; /*nasconde i fiocchi di neve fuori dalla pagina */
+}
+
+/* contenitore principale */
+.container {
+    position: relative;
+    top: 50%;
+    transform: translateY(-10%);
+}
+
+/* titolo */
+
+.title {
+    font-size: 3rem;
+    text-shadow: 2px 2px 4px rgba(rgb(0, 0, 0), rgb(0, 0, 0), rgb(0, 0, 0), 0.7);
+    margin: 1;
+}
+
+/*messaggio*/
+.message {
+    font-size: 1.3rem;
+    margin: 1rem 0;
+    text-shadow: 1px 1px 3px rgba(0, rgb(0, 0, 0), rgb(0, 0, 0),0.5);
+}
+
+/*pulsante */
+.surprise-btn {
+    background: #4c92fcb8;
+    color: #000000;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s;
+}
+
+.surprise-btn:hover {
+    background: #ff1e1e;
+}
+
+/* stile dein fiocchi di neve */
+#snow-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* i fiocchi nin interferiscono con il mouse */
+}
+
+.snowflake {
+    position: absolute;
+    top: -5%; /* Inizia fuori dalla pagina */
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    animation: fall linear infinite;
+}
+
+/* Animazione della caduta */
+@keyframes fall {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(110vh); /* Cade fuori dalla pagina */
+    }
+}
+
+
+.footer {
+    position: fixed;
+    bottom: 420px; /* Alza il footer di 20px dal bordo inferiore */
+    width: 100%;
+    background: rgba(68, 149, 255, 0.551);
+    color: #fff;
+    text-align: center;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    text-shadow: 1px 1px 3px rgba(0, 128, 255, 0.455);
+    box-shadow: 0 -2px 5px rgba(0, 157, 255, 0.5);
+}

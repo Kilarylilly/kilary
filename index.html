@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buon Natale!</title>
+    <!-- Colleghiamo il CSS -->
+     <LINK rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <!-- titolo -->
+        <h1 class="title"> 🎄 Buon Natale! 🎄</h1>
+
+        <!-- Messaggio -->
+        <p class="message"> Che la magia del Natale riempia i vostri cuori di gioia e serenità! ✨</p>
+
+         <!-- Pulsante -->
+        <button class="surprise-btn" onclick="showSurprise()"> Scopri la sorpresa! 🎁</button>
+
+        <!-- Div per fiocchi di neve -->
+         <div id="snow-container"></div>
+         
+    </div>
+
+    <footer class="footer">
+        Creato da Kilary, 2024 🎅
+    </footer>
+    
+
+
+
+    <!-- collegamento per js-->
+     <script src="script.js">
+        // Otteniamo il bottone e il link di download
+        const createGifButton = document.getElementById('createGif');
+        const downloadLink = document.getElementById('downloadLink');
+
+        // Funzione che genera la GIF
+        createGifButton.addEventListener('click', function () {
+            // Creiamo un oggetto GIF.js
+            const gif = new GIF({
+                workers: 2,
+                quality: 10,
+                width: 200,
+                height: 200
+            });
+
+            // Creiamo alcuni fotogrammi per la GIF
+            const container = document.querySelector('.image-container');
+            const frame1 = document.querySelector('.frame');
+
+            // Aggiungiamo 3 fotogrammi alla GIF
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    // Cambiamo il colore di sfondo per simulare una nuova immagine
+                    container.style.backgroundColor = i % 2 === 0 ? '#ff6347' : '#4682b4';
+                    
+                    // Creiamo un'immagine da aggiungere alla GIF
+                    gif.addFrame(container, { delay: 500 });
+                }, i * 500); // Aggiungiamo i fotogrammi con un intervallo di 500ms
+            }
+
+            // Una volta che la GIF è pronta, scarichiamola
+            gif.on('finished', function (blob) {
+                // Creiamo un URL per il blob
+                const url = URL.createObjectURL(blob);
+                
+                // Impostiamo il link di download
+                downloadLink.href = url;
+                downloadLink.download = 'animated.gif';
+                
+                // Mostriamo il link per il download
+                downloadLink.style.display = 'inline';
+            });
+
+            // Eseguiamo la generazione della GIF
+            gif.render();
+        });
+    </script>
+         
+</body>
+</html>
